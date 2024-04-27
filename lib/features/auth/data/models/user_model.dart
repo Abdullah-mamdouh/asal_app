@@ -3,11 +3,14 @@ part 'user_model.g.dart';
 
 @JsonSerializable()
 class UserModel {
-  bool? status;
-  String? msg;
-  UserModel? data;
+  // bool? status;
+  // String? msg;
+  @JsonKey(name: 'data')
+  UserDataModel? data;
 
-  UserModel({this.status, this.msg, this.data});
+  UserModel({//this.status,
+    //this.msg,
+    this.data});
 
   factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
 
@@ -24,7 +27,6 @@ class UserDataModel {
   String? notifications;
   String? profilePhoto;
   String? authKey;
-  String? favoriteId;
 
   UserDataModel(
       {this.id,
@@ -34,7 +36,7 @@ class UserDataModel {
         this.notifications,
         this.profilePhoto,
         this.authKey,
-        this.favoriteId});
+        });
 
   factory UserDataModel.fromJson(Map<String, dynamic> json) => _$UserDataModelFromJson(json);
 

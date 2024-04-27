@@ -1,9 +1,13 @@
 
+import 'package:asal_app/features/auth/logic/login_cubit/login_cubit.dart';
+import 'package:asal_app/features/auth/ui/login_screen/widgets/others_options_login_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../core/widgets/bouncing_button.dart';
+import 'login_bloc_listener.dart';
 import 'title_widget.dart';
 import 'dont_have_account_text.dart';
 import 'email_and_password.dart';
@@ -22,8 +26,8 @@ class SigninWidget extends StatelessWidget {
             //SizedBox(height:55 ,),
             verticalSpace(80),
             LogoWidget(),
-            verticalSpace(15),
-            TitleWidget(title: 'مرحبا بكم',),
+            verticalSpace(10),
+            TitleWidget(title: 'مرحباً بك',),
             Padding(
               padding: EdgeInsets.symmetric(vertical:20.h, horizontal: 20.0.w),
               child: Column(
@@ -34,19 +38,21 @@ class SigninWidget extends StatelessWidget {
                     alignment: AlignmentDirectional.centerEnd,
                     child: Text(
                       'نسيت كلمة المرور',
-                      style: TextStyles.font11GrayRegular,
+                      style: TextStyles.font16LightGraySemiBold,
                     ),
                   ),
                   verticalSpace(40),
-                  BouncingButton(child: Text('تسجيل الدخول', style: TextStyles.font13DarkBlueMedium,),//height: 55.h,
+                  BouncingButton(child: Text('تسجيل الدخول', style: TextStyles.font20WhightExtraLight,),//height: 55.h,
                     onPress: () {
                       validateThenDoLogin(context);
                     },),
                   verticalSpace(16),
                   // const TermsAndConditionsText(),
-                  // verticalSpace(40),
+
                   const DontHaveAccountText(),
-                  // const LoginBlocListener(),
+                  verticalSpace(60),
+                  OthersOptionsLoginWidget(),
+                  LoginBlocListener(),
                 ],
               ),
             ),
@@ -58,8 +64,8 @@ class SigninWidget extends StatelessWidget {
   }
 
   void validateThenDoLogin(BuildContext context) {
-    // if (context.read<SignInCubit>().formKey.currentState!.validate()) {
-    //   context.read<SignInCubit>().emitSignInStates();
-    // }
+    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
+      context.read<LoginCubit>().emitLoginStates();
+    }
   }
 }

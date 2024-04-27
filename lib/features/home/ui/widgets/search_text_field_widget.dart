@@ -1,4 +1,4 @@
-
+import 'package:asal_app/core/theming/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,17 +10,22 @@ class SearchTextFieldWidget extends StatelessWidget {
   final TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return AppTextFormField(
-      controller: searchController,
-      hintText: 'ابحث عن المنتج',
-      suffixIcon: IconButton(onPressed: (){},
-          iconSize: 40.w,
-          icon: Icon(Icons.search)),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter a valid password';
-        }
-      },
+    return SizedBox(
+      height: 40.h,
+      child: AppTextFormField(
+        controller: searchController,
+        hintText: 'ابحث عن المنتج',
+        hintTextDirection: TextDirection.rtl,
+        suffixIcon: IconButton(
+            onPressed: () {},
+            iconSize: 50.w,
+            icon: Image.asset(AppAssets.searchIcon,height: 60.h,)),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter a valid password';
+          }
+        },
+      ),
     );
   }
 }

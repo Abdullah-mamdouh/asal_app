@@ -15,15 +15,15 @@ class DontHaveAccountText extends StatelessWidget {
       text: TextSpan(
         children: [
           TextSpan(
-            text: 'ليس لدي حساب',
-            style: TextStyles.font13DarkBlueRegular,
+            text: 'ليس لدي حساب؟',
+            style: TextStyles.font16LightGraySemiBold,
           ),
           TextSpan(
             text: ' سجل الان',
             style: TextStyles.font13GreenSemiBold,
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                context.pushReplacementNamed(Routes.signupScreen);
+                // context.pushReplacementNamed(Routes.signupScreen);
               },
           ),
         ],

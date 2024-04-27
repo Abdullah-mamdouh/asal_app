@@ -1,4 +1,5 @@
 
+import 'package:asal_app/features/auth/logic/login_cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'widgets/login_body_widget.dart';
 
@@ -14,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    // SignInCubit.get(context).fetchUserLoginCredentials();
+    LoginCubit.get(context).fetchUserLoginCredentials();
   }
 
   @override

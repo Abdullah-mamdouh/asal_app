@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TitleWidget extends StatelessWidget {
   TitleWidget({Key? key, required this.title}) : super(key: key);
@@ -9,7 +10,7 @@ class TitleWidget extends StatelessWidget {
     return Text(
       title,
       style: TextStyle(
-        fontSize: 28,fontWeight: FontWeight.w900,
+        fontSize: 34.sp,fontWeight: FontWeight.w600,
         //color: Colors.white
       ),
     );

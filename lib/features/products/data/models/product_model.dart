@@ -5,9 +5,13 @@ part 'product_model.g.dart';
 class ProductModel {
   String? id;
   String? name;
+  @JsonKey(name: 'short_desc')
   String? shortDesc;
+  @JsonKey(name: "main_image")
   String? mainImage;
+  @JsonKey(name: 'list_price')
   String? listPrice;
+  @JsonKey(name: "sale_price")
   String? salePrice;
   String? discount;
   String? rating;

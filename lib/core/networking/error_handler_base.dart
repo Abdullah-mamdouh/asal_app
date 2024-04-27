@@ -3,8 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'api_service/api_error_handler.dart';
-import 'firebase_service/error_model.dart';
-import 'firebase_service/firebase_auth_error_handler/firebase_auth_error-handler.dart';
+import 'error_model.dart';
 
 class Handler {
   late ErrorModel errorModel;
@@ -36,21 +35,6 @@ abstract class ErrorHandlerBaise implements Exception {
   }
 
 
-}
-
-class ErrorHandlerAuth extends ErrorHandlerBaise {
-  ErrorHandlerAuth(super.error);
-
-  @override
-  ErrorModel handle() {
-    if (error is FirebaseException) {
-      // dio error so its an error from response of the API or from dio itself
-      return handleErrorAuth(error);
-    } else {
-      // default error
-      return AuthResultStatus.unknown.getFailure();
-    }
-  }
 }
 
 class SharedPreferencesErrorHandler extends ErrorHandlerBaise {

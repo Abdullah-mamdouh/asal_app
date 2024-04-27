@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:asal_app/features/auth/data/models/login_model.dart';
+import 'package:asal_app/features/auth/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -43,15 +44,16 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
+  static UserModel? user;
   void emitLoginStates() async {
     emit(const LoginState.loading());
-
     if (await internetChecker.isConnected) {
-      final loginModel = LoginModel(email: emailController.text,password: passwordController.text);
+      final loginModel = LoginModel(email: 'aboelazm111@gmail.com',password: '123456');
       final response = await authRepo.login(loginModel);
       response.when(success: (userModel) {
         emit(LoginState.success(userModel));
         debugPrint(userModel.toString());
+        user = userModel;
         saveUserLoginCredentials(loginModel);
       }, failure: (error) {
         emit(LoginState.error(error: error.errorModel.message ?? ''));

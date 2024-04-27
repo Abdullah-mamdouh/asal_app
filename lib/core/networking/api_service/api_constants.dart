@@ -1,12 +1,13 @@
 class ApiUsersConstants {
 
-  static const String baseUrl = "https://ihoneyherb.com/test-application/";
-  static const String loginEndPoint = "login.php";
-  static const String homeEndPoint = "home/home.php";
+  static const String baseUrl          = "https://ihoneyherb.com/test-application/";
+  static const String loginEndPoint    = "login.php";
+  static const String homeEndPoint     = "home/home.php";
   static const String productsEndPoint = "products/search_filter.php";
-  static const String token = "asd342dsdddsd323dsdadasd3e";
-  static const String platform = "1";
-  static const String device_id = "bfghtr5yrtytd654e6trd";
+  static const String token            = "asd342dsdddsd323dsdadasd3e";
+  static const String platform         = "1";
+  static const String device_id        = "bfghtr5yrtytd654e6trd";
+  static const headers                 = {'Accept-Language': 'ar'};
 }
 
 

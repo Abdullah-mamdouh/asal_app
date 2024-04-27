@@ -1,7 +1,9 @@
 import 'package:asal_app/core/networking/api_service/api_constants.dart';
 import 'package:asal_app/features/home/data/models/home_model.dart';
+import 'package:asal_app/features/products/data/models/product_data_model.dart';
 import 'package:asal_app/features/products/data/models/product_request_model.dart';
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../../features/auth/data/models/login_model.dart';
@@ -14,12 +16,18 @@ abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
   @POST(ApiUsersConstants.loginEndPoint)
+  @Headers(ApiUsersConstants.headers)
+  @FormUrlEncoded()
   Future<UserModel> login(@Body() LoginModel loginModel);
 
   @POST(ApiUsersConstants.homeEndPoint)
-  Future<HomeModel> getAllData(@Body() String authkey, String userid);
+  @Headers(ApiUsersConstants.headers)
+  @FormUrlEncoded()
+  Future<HomeModel> getAllData(@Field() String auth_key, @Field() String user_id);
 
   @POST(ApiUsersConstants.productsEndPoint)
-  Future<ProductModel> getProducts(@Body() ProductRequestModel productRequest);
+  @Headers(ApiUsersConstants.headers)
+  @FormUrlEncoded()
+  Future<ProductDataModel> getProducts(@Body() ProductRequestModel productRequest);
 
 }

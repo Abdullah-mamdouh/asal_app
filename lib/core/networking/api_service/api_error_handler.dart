@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../firebase_service/error_model.dart';
+import '../error_model.dart';
 import 'api_constants.dart';
 
 

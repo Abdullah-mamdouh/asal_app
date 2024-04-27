@@ -16,7 +16,7 @@ class StateHandler {
         ),
         content: Text(
           error,
-          style: TextStyles.font13DarkBlueMedium,
+          // style: TextStyles.font13DarkBlueMedium,
         ),
         actions: [
           TextButton(
