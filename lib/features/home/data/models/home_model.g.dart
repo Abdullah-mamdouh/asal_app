@@ -30,11 +30,11 @@ DataModel _$DataModelFromJson(Map<String, dynamic> json) => DataModel(
       products: (json['products'] as List<dynamic>?)
           ?.map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      selectedProducts: (json['selectedProducts'] as List<dynamic>?)
-          ?.map((e) => SelectedProductModel.fromJson(e as Map<String, dynamic>))
+      selectedProducts: (json['selected_products'] as List<dynamic>?)
+          ?.map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      newProducts: (json['newProducts'] as List<dynamic>?)
-          ?.map((e) => NewProductMdel.fromJson(e as Map<String, dynamic>))
+      newProducts: (json['new_products'] as List<dynamic>?)
+          ?.map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -42,8 +42,8 @@ Map<String, dynamic> _$DataModelToJson(DataModel instance) => <String, dynamic>{
       'slider': instance.slider,
       'categories': instance.categories,
       'products': instance.products,
-      'selectedProducts': instance.selectedProducts,
-      'newProducts': instance.newProducts,
+      'selected_products': instance.selectedProducts,
+      'new_products': instance.newProducts,
     };
 
 SliderModel _$SliderModelFromJson(Map<String, dynamic> json) => SliderModel(
@@ -71,77 +71,4 @@ Map<String, dynamic> _$CategoryModelToJson(CategoryModel instance) =>
       'id': instance.id,
       'catName': instance.catName,
       'icon': instance.icon,
-    };
-
-ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      shortDesc: json['shortDesc'] as String?,
-      mainImage: json['mainImage'] as String?,
-      listPrice: json['listPrice'] as String?,
-      salePrice: json['salePrice'] as String?,
-      discount: json['discount'] as String?,
-      rating: json['rating'] as String?,
-    );
-
-Map<String, dynamic> _$ProductModelToJson(ProductModel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'shortDesc': instance.shortDesc,
-      'mainImage': instance.mainImage,
-      'listPrice': instance.listPrice,
-      'salePrice': instance.salePrice,
-      'discount': instance.discount,
-      'rating': instance.rating,
-    };
-
-SelectedProductModel _$SelectedProductModelFromJson(
-        Map<String, dynamic> json) =>
-    SelectedProductModel(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      shortDesc: json['shortDesc'] as String?,
-      mainImage: json['mainImage'] as String?,
-      listPrice: json['listPrice'] as String?,
-      salePrice: json['salePrice'] as String?,
-      discount: json['discount'] as String?,
-      rating: json['rating'] as String?,
-    );
-
-Map<String, dynamic> _$SelectedProductModelToJson(
-        SelectedProductModel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'shortDesc': instance.shortDesc,
-      'mainImage': instance.mainImage,
-      'listPrice': instance.listPrice,
-      'salePrice': instance.salePrice,
-      'discount': instance.discount,
-      'rating': instance.rating,
-    };
-
-NewProductMdel _$NewProductMdelFromJson(Map<String, dynamic> json) =>
-    NewProductMdel(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      shortDesc: json['shortDesc'] as String?,
-      mainImage: json['mainImage'] as String?,
-      listPrice: json['listPrice'] as String?,
-      salePrice: json['salePrice'] as String?,
-      discount: json['discount'] as String?,
-      rating: json['rating'] as String?,
-    );
-
-Map<String, dynamic> _$NewProductMdelToJson(NewProductMdel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'shortDesc': instance.shortDesc,
-      'mainImage': instance.mainImage,
-      'listPrice': instance.listPrice,
-      'salePrice': instance.salePrice,
-      'discount': instance.discount,
-      'rating': instance.rating,
     };

@@ -1,4 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../products/data/models/product_model.dart';
 part 'home_model.g.dart';
 
 @JsonSerializable()
@@ -19,8 +21,10 @@ class DataModel {
   List<SliderModel>? slider;
   List<CategoryModel>? categories;
   List<ProductModel>? products;
-  List<SelectedProductModel>? selectedProducts;
-  List<NewProductMdel>? newProducts;
+  @JsonKey(name: 'selected_products')
+  List<ProductModel>? selectedProducts;
+  @JsonKey(name: 'new_products')
+  List<ProductModel>? newProducts;
 
   DataModel(
       {this.slider,
@@ -59,81 +63,4 @@ class CategoryModel {
   factory CategoryModel.fromJson(Map<String, dynamic> json) => _$CategoryModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$CategoryModelToJson(this);
-}
-
-@JsonSerializable()
-class ProductModel {
-  String? id;
-  String? name;
-  String? shortDesc;
-  String? mainImage;
-  String? listPrice;
-  String? salePrice;
-  String? discount;
-  String? rating;
-
-  ProductModel(
-      {this.id,
-        this.name,
-        this.shortDesc,
-        this.mainImage,
-        this.listPrice,
-        this.salePrice,
-        this.discount,
-        this.rating});
-
-  factory ProductModel.fromJson(Map<String, dynamic> json) => _$ProductModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ProductModelToJson(this);
-}
-
-@JsonSerializable()
-class SelectedProductModel {
-  String? id;
-  String? name;
-  String? shortDesc;
-  String? mainImage;
-  String? listPrice;
-  String? salePrice;
-  String? discount;
-  String? rating;
-
-  SelectedProductModel(
-      {this.id,
-        this.name,
-        this.shortDesc,
-        this.mainImage,
-        this.listPrice,
-        this.salePrice,
-        this.discount,
-        this.rating});
-
-  factory SelectedProductModel.fromJson(Map<String, dynamic> json) => _$SelectedProductModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SelectedProductModelToJson(this);
-}
-
-@JsonSerializable()
-class NewProductMdel {
-  String? id;
-  String? name;
-  String? shortDesc;
-  String? mainImage;
-  String? listPrice;
-  String? salePrice;
-  String? discount;
-  String? rating;
-
-  NewProductMdel({this.id,
-    this.name,
-    this.shortDesc,
-    this.mainImage,
-    this.listPrice,
-    this.salePrice,
-    this.discount,
-    this.rating});
-
-  factory NewProductMdel.fromJson(Map<String, dynamic> json) => _$NewProductMdelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$NewProductMdelToJson(this);
 }

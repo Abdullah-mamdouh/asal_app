@@ -24,7 +24,8 @@ class _ApiService implements ApiService {
   Future<UserModel> login(LoginModel loginModel) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Accept-Language': 'ar'};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(loginModel.toJson());
     final _result = await _dio
@@ -32,6 +33,7 @@ class _ApiService implements ApiService {
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/x-www-form-urlencoded',
     )
             .compose(
               _dio.options,
@@ -50,18 +52,23 @@ class _ApiService implements ApiService {
 
   @override
   Future<HomeModel> getAllData(
-    String authkey,
-    String userid,
+    String auth_key,
+    String user_id,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = authkey;
+    final _headers = <String, dynamic>{r'Accept-Language': 'ar'};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = {
+      'auth_key': auth_key,
+      'user_id': user_id,
+    };
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<HomeModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/x-www-form-urlencoded',
     )
             .compose(
               _dio.options,
@@ -79,17 +86,20 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ProductModel> getProducts(ProductRequestModel productRequest) async {
+  Future<ProductDataModel> getProducts(
+      ProductRequestModel productRequest) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Accept-Language': 'ar'};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(productRequest.toJson());
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<ProductModel>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<ProductDataModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/x-www-form-urlencoded',
     )
             .compose(
               _dio.options,
@@ -102,7 +112,7 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ProductModel.fromJson(_result.data!);
+    final value = ProductDataModel.fromJson(_result.data!);
     return value;
   }
 
