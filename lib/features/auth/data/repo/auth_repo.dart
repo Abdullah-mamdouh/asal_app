@@ -13,10 +13,8 @@ class AuthRepo {
       LoginModel loginModel) async {
     try {
       final response = await apiService.login(loginModel);
-      debugPrint(response.toString());
       return ResultHandler.success(response);
     } catch (error) {
-      debugPrint(error.toString());
       return ResultHandler.failure(Handler.handle(ApiErrorHandler(error)));
     }
   }

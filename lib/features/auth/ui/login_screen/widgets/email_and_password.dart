@@ -16,11 +16,6 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   bool isObscureText = true;
 
   @override
-  void initState() {
-    super.initState();
-    //setupPasswordControllerListener();
-  }
-  @override
   Widget build(BuildContext context) {
     return Form(
       key: context.read<LoginCubit>().formKey,
@@ -32,7 +27,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
               if (value == null ||
                   value.isEmpty ||
                   !AppRegex.isEmailValid(value)) {
-                return 'Please enter a valid email';
+                return 'من فضلك ادخل البريد الالكتروني بشكل صحيح';
               }
             },
             controller: context.read<LoginCubit>().emailController,
@@ -54,7 +49,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
+                return 'من فضلك ادخل كلمة المرور بشكل صحيح';
               }
             },
           ),
@@ -63,8 +58,4 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
     );
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 }

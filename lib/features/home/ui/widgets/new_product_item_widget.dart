@@ -1,15 +1,15 @@
+import 'package:asal_app/core/helpers/constant.dart';
 import 'package:asal_app/core/helpers/spacing.dart';
 import 'package:asal_app/core/theming/colors.dart';
 import 'package:asal_app/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/helpers/constant.dart';
 import '../../../../core/theming/assets.dart';
 import '../../../products/data/models/product_model.dart';
 
-class SelectedProductItemWidget extends StatelessWidget {
-  SelectedProductItemWidget({Key? key, required this.product}) : super(key: key);
+class NewProductItemWidget extends StatelessWidget {
+  NewProductItemWidget({Key? key, required this.product}) : super(key: key);
   ProductModel product;
   @override
   Widget build(BuildContext context) {
@@ -37,8 +37,8 @@ class SelectedProductItemWidget extends StatelessWidget {
                 color: ColorsManager.lighterGray.withOpacity(0.7),
                 child: Image.network(
                   fit: BoxFit.cover,
-                  product.mainImage ??
-                      image,
+                    product.mainImage ??
+                    image,
                   errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
                     return Image.network(image, fit: BoxFit.cover,);
                   },
@@ -90,34 +90,9 @@ class SelectedProductItemWidget extends StatelessWidget {
               child: Row(
                 textDirection: TextDirection.rtl,
                 children: [
-                  Text(product.salePrice ??'22', style: TextStyles.font14RedBold,),
-                  Text('درهم إماراتي ', style: TextStyles.font14RedBold,),
+                  Text(product.salePrice ??'22', style: TextStyles.font16BlackBold,),
+                  Text('درهم إماراتي ', style: TextStyles.font16BlackBold,),
                 ],
-              ),
-            ),
-            Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 5.w),
-              child: Row(
-                textDirection: TextDirection.rtl,
-                children: [
-                  Text(product.listPrice ?? ' 45', style: TextStyles.font14BlackBoldLineThrough,),
-                  Text('درهم إماراتي', style: TextStyles.font14BlackBoldLineThrough,),
-                ],
-              ),
-            ),
-            Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 5.w),
-              child: Container(
-                padding: EdgeInsets.all(3.h),
-                color: Colors.black,
-                width: 70.w,
-                child: Row(
-                  textDirection: TextDirection.rtl,
-                  children: [
-                    Text('خصم', style: TextStyles.font16WhiteMedium,),
-                    Text('40%', style: TextStyles.font12WhightRegular,),
-                  ],
-                ),
               ),
             ),
           ],

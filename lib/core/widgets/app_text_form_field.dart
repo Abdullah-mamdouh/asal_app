@@ -72,6 +72,7 @@ class AppTextFormField extends StatelessWidget {
             width: 1.3,
           ),
           borderRadius: BorderRadius.circular(16.0),
+
         ),
         hintStyle: hintStyle ?? TextStyles.font16LightGrayMedium,
         hintText: hintText,

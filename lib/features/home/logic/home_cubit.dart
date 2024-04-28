@@ -13,18 +13,18 @@ class HomeCubit extends Cubit<HomeState> {
 
   static HomeCubit get(context) => BlocProvider.of<HomeCubit>(context);
 
-  DataModel? homeData ;
   static List<ProductModel> homeProducts = [];
   static List<SliderModel> homeSlider = [];
   static List<ProductModel> homeSelectedProducts = [];
   static List<ProductModel> newProducts = [];
-  void emitGetProductStates(String auth_key, String user_id) async {
+  emitGetProductStates(String? auth_key, String? user_id) async {
     emit(const HomeState.loading());
-    final response = await homeRepo.getAllData(auth_key: auth_key, user_id: user_id);
+    final response = await homeRepo.getAllData(auth_key: auth_key!, user_id: user_id!);
     response.when(success: (data) {
       homeProducts = data.data!.products!;
       homeSelectedProducts = data.data!.selectedProducts!;
       homeSlider = data.data!.slider!;
+      newProducts = data.data!.newProducts!;
       emit(HomeState.success(data));
     }, failure: (error) {
       emit(HomeState.error(error: error.errorModel.message ?? ''));
