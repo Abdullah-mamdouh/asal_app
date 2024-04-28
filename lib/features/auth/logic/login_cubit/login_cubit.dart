@@ -44,16 +44,15 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
-  static UserModel? user;
+  static UserDataModel? user;
   void emitLoginStates() async {
     emit(const LoginState.loading());
     if (await internetChecker.isConnected) {
-      final loginModel = LoginModel(email: 'aboelazm111@gmail.com',password: '123456');
+      final loginModel = LoginModel(email: emailController.text,password: passwordController.text);
       final response = await authRepo.login(loginModel);
-      response.when(success: (userModel) {
+      response.when(success: (UserModel userModel) {
         emit(LoginState.success(userModel));
-        debugPrint(userModel.toString());
-        user = userModel;
+        user = userModel.data;
         saveUserLoginCredentials(loginModel);
       }, failure: (error) {
         emit(LoginState.error(error: error.errorModel.message ?? ''));

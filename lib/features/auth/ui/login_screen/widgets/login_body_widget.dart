@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../core/widgets/bouncing_button.dart';
+import '../../../../home/logic/home_cubit.dart';
 import 'login_bloc_listener.dart';
 import 'title_widget.dart';
 import 'dont_have_account_text.dart';
@@ -43,8 +44,8 @@ class SigninWidget extends StatelessWidget {
                   ),
                   verticalSpace(40),
                   BouncingButton(child: Text('تسجيل الدخول', style: TextStyles.font20WhightExtraLight,),//height: 55.h,
-                    onPress: () {
-                      validateThenDoLogin(context);
+                    onPress: () async{
+                      await validateThenDoLogin(context);
                     },),
                   verticalSpace(16),
                   // const TermsAndConditionsText(),
@@ -63,9 +64,10 @@ class SigninWidget extends StatelessWidget {
     );
   }
 
-  void validateThenDoLogin(BuildContext context) {
+  validateThenDoLogin(BuildContext context) async{
     if (context.read<LoginCubit>().formKey.currentState!.validate()) {
       context.read<LoginCubit>().emitLoginStates();
+
     }
   }
 }

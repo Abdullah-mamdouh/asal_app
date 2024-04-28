@@ -1,3 +1,4 @@
+import 'package:asal_app/features/auth/data/models/user_model.dart';
 import 'package:asal_app/features/home/logic/home_cubit.dart';
 import 'package:asal_app/features/home/ui/home_screen.dart';
 import 'package:asal_app/features/products/logic/product_cubit.dart';
@@ -18,20 +19,14 @@ class AppRouter {
     switch (settings.name) {
       case Routes.loginScreen:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-              create: (context) => getIt<LoginCubit>(),
-            child:  LoginScreen(),),
+            builder: (_) =>  LoginScreen(),
         );
       case Routes.homeScreen:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-              create: (context) => getIt<HomeCubit>(),
-              child:  HomeScreen(),),);
+            builder: (_) => HomeScreen(user: settings.arguments as UserDataModel),);
       case Routes.productsScreen:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-              create: (context) => getIt<ProductCubit>(),
-              child:  ProductScreen(),),);
+            builder: (_) => ProductScreen(),);
 
       default:
         return MaterialPageRoute(

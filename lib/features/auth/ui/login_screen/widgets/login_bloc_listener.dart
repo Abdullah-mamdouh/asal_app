@@ -7,6 +7,7 @@ import 'package:asal_app/features/auth/logic/login_cubit/login_state.dart';
 
 import '../../../../../core/routing/routes.dart';
 
+import '../../../../home/logic/home_cubit.dart';
 import '../../../logic/login_cubit/login_cubit.dart';
 
 class LoginBlocListener extends StatelessWidget {
@@ -25,12 +26,15 @@ class LoginBlocListener extends StatelessWidget {
               builder: (context) => const IndicatorWidget(),
             );
           },
-          success: (loginResponse) {
+          success: (loginResponse) async{
             context.pop();
-            context.pushNamed(Routes.homeScreen);
+            context.read<HomeCubit>().emitGetProductStates(loginResponse.data.authKey,loginResponse.data.id);
+            context.pushNamed(Routes.homeScreen,arguments:LoginCubit.user);
+
 
           },
           error: (error) {
+            context.pop();
             StateHandler.setupErrorState(context, error);
           },
         );

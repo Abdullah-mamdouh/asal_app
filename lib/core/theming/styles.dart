@@ -6,7 +6,6 @@ import 'colors.dart';
 import 'font_weight_helper.dart';
 
 class TextStyles {
-
   static TextStyle font15WhiteBold = TextStyle(
       fontSize: 15.sp,
       fontWeight: FontWeightHelper.bold,
@@ -19,9 +18,15 @@ class TextStyles {
       color: Colors.black,
       fontFamily: interFontFamily);
 
-  static TextStyle font12BlackBold = TextStyle(
+  static TextStyle font16BlackBold = TextStyle(
       fontSize: 16.sp,
       fontWeight: FontWeightHelper.extraBold,
+      color: Colors.black,
+      fontFamily: interFontFamily);
+
+  static TextStyle font12BlackBold = TextStyle(
+      fontSize: 12.sp,
+      fontWeight: FontWeightHelper.medium,
       color: Colors.black,
       fontFamily: interFontFamily);
 
@@ -67,11 +72,19 @@ class TextStyles {
       color: ColorsManager.mainColor,
       fontFamily: interFontFamily);
 
-  static TextStyle font12RedRegular = TextStyle(
-      fontSize: 12.sp,
-      fontWeight: FontWeightHelper.regular,
+  static TextStyle font14RedBold = TextStyle(
+      fontSize: 14.sp,
+      fontWeight: FontWeightHelper.bold,
       color: Colors.red,
       fontFamily: interFontFamily);
+
+  static TextStyle font14BlackBoldLineThrough = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.black,
+    fontFamily: interFontFamily,
+    decoration: TextDecoration.lineThrough,
+  );
 
   static TextStyle font13GreenSemiBold = TextStyle(
       fontSize: 18.sp,

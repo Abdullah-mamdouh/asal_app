@@ -14,7 +14,7 @@ class ProductsIconsWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       textDirection: TextDirection.rtl,
       children: [
-        IconWidget('أعشاب', AppAssets.honeyIcon),
+        IconWidget('أعشاب', AppAssets.herbsIcon),
         IconWidget('صحة وجمال', AppAssets.beautyIcon),
         IconWidget("زيوت", AppAssets.oilIcon),
         IconWidget("عسل", AppAssets.honeyIcon),
@@ -44,7 +44,7 @@ class IconWidget extends StatelessWidget {
         ),
         Text(
           iconText!,
-          style: TextStyles.font12BlackBold,
+          style: TextStyles.font16BlackBold,
         ),
       ],
     );
